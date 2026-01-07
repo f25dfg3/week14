@@ -10,7 +10,7 @@ jobs:
   linting-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Liting Job
+      - name: Linting Job
         run: echo "Starting Litning of HTML & CSS Files"
       - name: Clone Repo On the Runner
         uses: actions/checkout@v6
@@ -45,12 +45,12 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build Image
-        run: docker image build -t ${{ secrets.DOCKERHUB_USERNAME }}/app:latest .
+        run: docker image build -t ${{ secrets.DOCKERHUB_USERNAME }}/w14g3:latest .
       - name: List Images On the Runner
         run: docker image ls
       - name: Create Container On the Runner
-        run: docker container run -d -p 2222:80 ${{ secrets.DOCKERHUB_USERNAME }}/app:latest
+        run: docker container run -d -p 2222:80 ${{ secrets.DOCKERHUB_USERNAME }}/w14g3:latest
       - name: List Running Containers
         run: docker container ls
       - name: Push Docker Image on the DH
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/app:latest
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/w14g3:latest
