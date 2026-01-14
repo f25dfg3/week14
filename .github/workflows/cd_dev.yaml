@@ -1,0 +1,14 @@
+name: dev-cd-wf
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  dev-dep-job:
+    environment: "development-env"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dev Deployment Job
+        run: echo "Your App is Ging to be deployed on Render"
+      - name: Send Message to Render
+        run: curl -X POST ${{secrets.RENDER_DEP_HOOK}}
