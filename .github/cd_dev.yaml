@@ -1,0 +1,15 @@
+name: CD Development Pipeline
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  build: 
+    environment: configure deployment-env
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dev Deployment Step
+        run: echo "Deploying to development environment..."
+      - name: Send Message to Render
+        run: curl -X POST ${{RENDER_HOOK_URL}}
+        
